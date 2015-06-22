@@ -1,0 +1,19 @@
+// set up the stage and woker canvases
+.stage , .worker
+	position: absolute
+	left: 0
+	top: 0
+	
+// make the stage canvas cover the screen by default
+.stage
+	z-index: 1
+	height: 100%
+	width: 100%
+
+// hide the worker canvas off screen and
+// make it transparent for good measure
+.worker
+	z-index: 2
+//	@include translate( -100% , -100% )
+//	opacity: 0
+	
