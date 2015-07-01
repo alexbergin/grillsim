@@ -8,7 +8,7 @@ define ->
 		color: 0xffffff
 		background: 0xEDFFFE
 		onlyShadow: false
-		shadowDarkness: 0.1
+		shadowDarkness: 0.05
 		debug: false
 		mapSize: 2048
 		init: ->

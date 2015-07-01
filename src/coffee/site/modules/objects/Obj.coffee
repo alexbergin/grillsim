@@ -23,6 +23,7 @@ define ->
 			# save the object
 			@.obj = obj
 			@.mesh = @.obj.children[0]
+			@.mesh.geometry = new THREE.Geometry().fromBufferGeometry( @.mesh.geometry )
 
 			@.mesh.castShadow = true
 			@.mesh.receiveShadow = true
@@ -44,7 +45,6 @@ define ->
 			for process in run
 				for vertex in vertices
 					if data?[ process ]?[ vertex ]?
-						console.log data?[ process ]?[ vertex ]
 						defaults[ process ][ vertex ] = data[ process ][ vertex ]
 					@.mesh[ process ][ vertex ] = defaults[ process ][ vertex ]
 
