@@ -78,6 +78,7 @@ define [
 			@.renderer.setClearColor 0xFFFBED
 			@.onIsTouch()
 
+			# no shadows when mobile
 			if @.isTouch is 1000
 				@.renderer.shadowMapEnabled = false
 			else 
@@ -95,7 +96,7 @@ define [
 		onResize: =>
 
 			# set canvas scale
-			if @.isTouch is true then mult = 0.125 else mult = 0.125
+			if @.isTouch is true then mult = 2 else mult = 1
 
 			# get the width + height
 			@.height = window.innerHeight * mult

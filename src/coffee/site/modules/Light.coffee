@@ -10,8 +10,7 @@ define ->
 		onlyShadow: false
 		shadowDarkness: 0.1
 		debug: false
-		mapSize: 800
-
+		mapSize: 2048
 		init: ->
 
 			@.make()
@@ -35,10 +34,10 @@ define ->
 			@.light.shadowCameraVisible = @.debug
 			@.light.shadowCameraNear = 0
 			@.light.shadowCameraFar = 75
-			@.light.shadowCameraLeft = -25
-			@.light.shadowCameraRight = 25
-			@.light.shadowCameraTop = 25
-			@.light.shadowCameraBottom = -25
+			@.light.shadowCameraLeft = -50
+			@.light.shadowCameraRight = 50
+			@.light.shadowCameraTop = 50
+			@.light.shadowCameraBottom = -50
 			@.light.shadowMapWidth = @.mapSize
 			@.light.shadowMapHeight = @.mapSize
 

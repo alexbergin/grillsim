@@ -1,23 +1,8 @@
-// set up the stage and woker canvases
-.stage , .worker
-	position: absolute
-	left: 0
-	top: 0
-	
-// make the stage canvas cover the screen by default
+// set up the stage canvas
 .stage
 	z-index: 1
-	@include transform-origin( top , left )
-	@include scale( 8.0 )
-	height: 25%
-	width: 25%
-	image-rendering: pixelated
-
-// hide the worker canvas off screen and
-// make it transparent for good measure
-
-.worker
-	z-index: 2
-//	@include translate( -100% , -100% )
-//	opacity: 0
-	
+	position: absolute
+	height: 100%
+	width: 100%
+	left: 0
+	top: 0
