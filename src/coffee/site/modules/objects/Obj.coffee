@@ -23,8 +23,12 @@ define ->
 			# save the object
 			@.obj = obj
 			@.mesh = @.obj.children[0]
-			@.mesh.geometry = new THREE.Geometry().fromBufferGeometry( @.mesh.geometry )
 
+			# convert from buffer geometry to regular
+			# consider doing this only when a vertex needs editing?
+			@.mesh.geometry = new THREE.Geometry().fromBufferGeometry @.mesh.geometry
+
+			# set up shadows
 			@.mesh.castShadow = true
 			@.mesh.receiveShadow = true
 
