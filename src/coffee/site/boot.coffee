@@ -11,6 +11,7 @@ define [
 
 	# plugins
 	"OBJLoader"
+	"CannonDebugRenderer"
 
 ] , (
 

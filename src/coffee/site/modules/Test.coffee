@@ -17,16 +17,17 @@ define [
 
 		init: ->
 
+			window.addEventListener "touchstart" , @.make
 			@.make()
 
-		make: ->
+		make: =>
 
 			@.dogs.push new HotDog
-				position: 
-					y: 2
-				rotation:
-					z: 0.1
-			@.buns.push new DogBun()
+				position:
+					y: 9
+			@.buns.push new DogBun
+				position:
+					y: 6
 
 		loop: ->
 

@@ -9,6 +9,7 @@ require.config
 		"requestAnimationFrame": "vendor/requestAnimationFrame/app/requestAnimationFrame"
 		"THREE": "vendor/threejs/build/three.min"
 		"OBJLoader": "vendor/threejs/examples/js/loaders/OBJLoader"
+		"CannonDebugRenderer": "vendor/cannon/tools/threejs/CannonDebugRenderer"
 
 	shim:
 		"OBJLoader":
@@ -16,6 +17,9 @@ require.config
 
 		"THREE":
 			deps: [ "CANNON" ]
+
+		"CannonDebugRenderer":
+			deps: [ "CANNON" , "THREE" ]
 		
 require [ "site/boot" ] , ( Site ) ->
 	new Site()

@@ -67,7 +67,6 @@ define [
 
 			# resize the renderer to always match the window
 			window.addEventListener "resize" , @.onResize
-			window.addEventListener "touchstart" , @.onTouchStart
 
 		build: ->
 
@@ -76,9 +75,14 @@ define [
 			@.renderer = new THREE.WebGLRenderer
 
 			# set renderer preferences
-			@.renderer.setClearColor 0xf1fDfC
-			@.renderer.shadowMapEnabled = true
-			@.renderer.shadowMapType = THREE.PCFShadowMap  
+			@.renderer.setClearColor 0xFFFBED
+			@.onIsTouch()
+
+			if @.isTouch is 1000
+				@.renderer.shadowMapEnabled = false
+			else 
+				@.renderer.shadowMapEnabled = true
+				@.renderer.shadowMapType = THREE.PCFShadowMap
 
 			# append to the page
 			@.renderer.domElement.classList.add "stage"
@@ -91,7 +95,7 @@ define [
 		onResize: =>
 
 			# set canvas scale
-			if @.isTouch is true then mult = 2 else mult = 1
+			if @.isTouch is true then mult = 0.125 else mult = 0.125
 
 			# get the width + height
 			@.height = window.innerHeight * mult
@@ -100,19 +104,19 @@ define [
 			# resize the renderer
 			@.renderer.setSize @.width , @.height
 
-		onTouchStart: =>
+		onIsTouch: =>
 
-			# apply styles specific for touch devices
-			document.body.classList.add "is-touch"
+			# test
+			if window.ontouchstart isnt undefined
 
-			# make the camera distance lower
-			@.camera.alpha.far = 5000
+				# apply styles specific for touch devices
+				document.body.classList.add "is-touch"
 
-			# save the state for later
-			@.isTouch = true
+				# save the state for later
+				@.isTouch = true
 
-			# apply a resize
-			@.onResize()
+				# apply a resize
+				@.onResize()
 
 		render: =>
 

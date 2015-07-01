@@ -6,11 +6,11 @@ define ->
 		# light options
 		cast: true
 		color: 0xffffff
-		background: 0xafacaa
+		background: 0xEDFFFE
 		onlyShadow: false
-		shadowDarkness: 0.05
+		shadowDarkness: 0.1
 		debug: false
-		mapSize: 4096
+		mapSize: 800
 
 		init: ->
 
@@ -21,8 +21,8 @@ define ->
 		make: ->
 
 			# make the lights
-			@.light = new THREE.DirectionalLight @.color , 0.2
-			@.ambient = new THREE.HemisphereLight @.color , @.background , 0.75
+			@.light = new THREE.DirectionalLight @.background , 0.1
+			@.ambient = new THREE.HemisphereLight @.background , @.background , 0.75
 
 		preferences: ->
 
@@ -49,5 +49,5 @@ define ->
 			site.stage.scene.add @.ambient
 
 			# position the light source
-			@.light.position.set -30 , 30 , 30
+			@.light.position.set -10 , 30 , 10
 			@.light.lookAt x: 0 , y: 0 , z: 0

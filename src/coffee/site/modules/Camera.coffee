@@ -7,13 +7,13 @@ define ->
 		# where the camera is facing
 		facing:
 			x: 0
-			y: 0
+			y: 3
 			z: 0
 
 		# the camera's target position
 		anchor:
 			x: 9
-			y: -6
+			y: 5
 			z: 9
 
 		# the camera's actual position
@@ -39,7 +39,7 @@ define ->
 		build: ->
 
 			# store the camera in the alpha property
-			@.alpha = new THREE.PerspectiveCamera 66 , window.innerWidth / window.innerHeight , 1 , 15000
+			@.alpha = new THREE.PerspectiveCamera 66 , window.innerWidth / window.innerHeight , 1 , 45
 
 		addListeners: ->
 
@@ -70,8 +70,8 @@ define ->
 
 		rotate: ->
 			@.angle += 0.01
-			@.anchor.x = Math.sin( @.angle ) * 14
-			@.anchor.z = Math.cos( @.angle ) * 14
+			@.anchor.x = Math.sin( @.angle ) * 9
+			@.anchor.z = Math.cos( @.angle ) * 9
 
 		updatePosition: ->
 
@@ -84,9 +84,9 @@ define ->
 				@.alpha.position[ vertex ] = @.ease( @.alpha.position[ vertex ] , @.position[ vertex ] , 0.1 )
 
 			# get the target
-			if site.stage.test?.dogs[0]?.mesh?
+			# if site.stage.test?.dogs[0]?.mesh?
 
-				 @.facing = site.stage.test.dogs[0]?.mesh?.position
+			# 	 @.facing = site.stage.test.dogs[0]?.mesh?.position
 
 			# make the camera look at its target
 			@.alpha.lookAt x: @.facing.x , y: @.facing.y , z: @.facing.z

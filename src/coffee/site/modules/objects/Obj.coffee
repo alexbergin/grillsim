@@ -4,7 +4,7 @@ define ->
 
 		constructor: ( data ) ->
 
-			run = [ "init" , "addGeometry" , "addPhysics" ]
+			run = [ "init" , "addGeometry" ]
 			for process in run
 				@[ process ]? data
 
@@ -44,6 +44,7 @@ define ->
 			for process in run
 				for vertex in vertices
 					if data?[ process ]?[ vertex ]?
+						console.log data?[ process ]?[ vertex ]
 						defaults[ process ][ vertex ] = data[ process ][ vertex ]
 					@.mesh[ process ][ vertex ] = defaults[ process ][ vertex ]
 
@@ -60,7 +61,7 @@ define ->
 			def = @.definition
 
 			# basic material for cruise control to simplicity
-			material = new THREE.MeshPhongMaterial
+			material = new THREE.MeshBasicMaterial
 				shading: THREE.SmoothShading
 				color: def.color
 				specular: 0xFFFFFF
@@ -72,20 +73,8 @@ define ->
 
 		addPhysics: ->
 
-			# get the object data
-			def = @.definition
-
 			if @.mesh?
-
-				p = @.mesh.position
-
-				@.body = new CANNON.Body 
-					mass: def.mass
-					shape: new CANNON.Box( new CANNON.Vec3(0.5,0.1,3))
-					position: new CANNON.Vec3( p.x , p.y , p.z )
-
-				site.stage.world.add @.body
-
+				@.collision?() 
 			else
 				setTimeout =>
 					@.addPhysics()

@@ -7,11 +7,15 @@
 // make the stage canvas cover the screen by default
 .stage
 	z-index: 1
-	height: 100%
-	width: 100%
+	@include transform-origin( top , left )
+	@include scale( 8.0 )
+	height: 25%
+	width: 25%
+	image-rendering: pixelated
 
 // hide the worker canvas off screen and
 // make it transparent for good measure
+
 .worker
 	z-index: 2
 //	@include translate( -100% , -100% )
