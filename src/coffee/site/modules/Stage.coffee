@@ -2,6 +2,7 @@ define [
 
 	# submodules
 	"site/modules/Camera"
+	"site/modules/Cook"
 	"site/modules/Light"
 	"site/modules/World"
 	"site/modules/Test"
@@ -10,6 +11,7 @@ define [
 
 	# submodules
 	Camera
+	Cook
 	Light
 	World
 	Test
@@ -37,10 +39,12 @@ define [
 			"camera"
 			"world"
 			"test"
+			"cook"
 		]
 
 		# submodules
 		camera: new Camera
+		cook: new Cook
 		light: new Light
 		world: new World
 		test: new Test

@@ -25,9 +25,8 @@ define [
 			@.dogs.push new HotDog
 				position:
 					y: 9
-			@.buns.push new DogBun
-				position:
-					y: 6
+
+			site.stage.cook.add @.dogs[ @.dogs.length - 1 ]
 
 		loop: ->
 

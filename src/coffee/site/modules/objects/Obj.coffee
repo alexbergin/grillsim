@@ -67,6 +67,7 @@ define ->
 			# basic material for cruise control to simplicity
 			material = new THREE.MeshBasicMaterial
 				shading: THREE.SmoothShading
+				vertexColors: THREE.FaceColors
 				color: def.color
 				specular: 0xFFFFFF
 				shininess: 0.3
@@ -86,10 +87,15 @@ define ->
 
 		update: ->
 
+			# sync the positioning of the threejs object with the cannon object
 			if @.body? and @.mesh?
 				
+				# vectors/props we loop through
 				vectors = [ "position" , "quaternion" ]
 				props = [ "x" , "y" , "z" , "w" ]
+				
 				for vector in vectors
 					for prop in props
+
+						# three value = cannon values=
 						if @.mesh[vector][ prop ]? then @.mesh[vector][ prop ] = @.body[vector][ prop ]
