@@ -5,8 +5,8 @@ define ->
 		cooking: []
 		last: 0
 
-		maxAltitude: 	0.7500
-		maxCooked: 		0.0025
+		maxAltitude: 	3.0000
+		maxCookRate: 	0.0075
 
 		add: ( item ) ->
 
@@ -38,9 +38,9 @@ define ->
 
 		getCooked: ( altitude ) ->
 
-			cooked = Math.max( @.maxAltitude * @.maxAltitude - altitude * altitude , 0 )
-			cooked = cooked / ( @.maxAltitude * @.maxAltitude )
-			cooked *= @.maxCooked
+			cooked = Math.max( Math.pow( @.maxAltitude , 2 ) - Math.pow( altitude , 2 ) , 0 )
+			cooked = cooked / Math.pow( @.maxAltitude , 2 )
+			cooked *= @.maxCookRate
 			return cooked
 
 		applyColor: ( item , face , cookedAmount ) ->

@@ -48,5 +48,5 @@ define ->
 			site.stage.scene.add @.ambient
 
 			# position the light source
-			@.light.position.set -10 , 30 , 10
+			@.light.position.set 0 , 30 , 0
 			@.light.lookAt x: 0 , y: 0 , z: 0
